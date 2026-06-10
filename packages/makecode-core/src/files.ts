@@ -84,12 +84,9 @@ export async function mkHomeCacheAsync(dir?: string): Promise<mkc.Cache> {
             await host().writeFileAsync(tmpPath, val)
 
             try {
-                if (await host().existsAsync(filePath)) {
-                    await host().unlinkAsync(filePath);
-                }
-                return await host().renameAsync(tmpPath, filePath);
+                await host().renameAsync(tmpPath, filePath);
             } catch (e) {
-                await host().unlinkAsync(tmpPath);
+                try { await host().unlinkAsync(tmpPath); } catch { /* let it go */ }
             }
         }
     }

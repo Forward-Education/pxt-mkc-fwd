@@ -1,13 +1,26 @@
-
 {
+    "name": "pxt-mkc-fwd",
+    "version": "1.3.5",
     "private": true,
+    "bin": {
+        "mkc": "bin/mkc.js",
+        "makecode": "bin/mkc.js"
+    },
+    "files": [
+        "bin/mkc.js"
+    ],
     "scripts": {
+        "build": "npm run build --workspaces && npm run bundle",
+        "bundle": "node scripts/bundle.js",
+        "compile": "npm run build",
+        "prepare": "npm run build"
     },
     "devDependencies": {
+        "esbuild": "^0.28.1"
     },
     "workspaces": [
-      "packages/makecode-core",
-      "packages/makecode-browser",
-      "packages/makecode-node"
+        "packages/makecode-core",
+        "packages/makecode-browser",
+        "packages/makecode-node"
     ]
-  }
+}

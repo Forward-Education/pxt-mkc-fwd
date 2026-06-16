@@ -1,5 +1,6 @@
 tmp
 built
+bin
 .DS_Store
 node_modules
 pxt_modules
